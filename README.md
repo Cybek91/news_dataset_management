@@ -48,7 +48,10 @@ Example for checking if phrase "will smith" in included in the dataset:
 python main_cli.py -vv search_engine "News_Category_Dataset_v2.json" -p "will smith"
 ```
 
-#### Things which could be added:
+#### Things which could be added/improved:
 * tests (pytest, unitest)
 * linter (ex. pylint)
 * code formater (ex. black)
+* datasets can take a lot of space and they could be stored as zip files and unpacked/proccesed in application
+but it's depends on requirements)
+
