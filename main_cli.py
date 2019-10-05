@@ -1,11 +1,12 @@
 import argparse
 import logging
 from search_engine import search_engine
+from import_dataset import import_dataset
 import sys
 import time
 
 
-ENABLED_MODULES = {"search_engine": search_engine}
+ENABLED_MODULES = {"search_engine": search_engine, "import_dataset": import_dataset}
 LOGGER = logging.getLogger(__name__)
 
 
