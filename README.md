@@ -3,12 +3,16 @@
 ## Project structure
 
 ```
-├── dataset                   // datasets store
+├── dataset                   // place where datasets will be imported
 │   └── some_dataset.json
+├── import_dataset
+│   └── __init__.py
+│   └── import_dataset.py      // core module for importing and saving dataset to db
 ├── search_engine
-│   └── __init__.py           // for loading modules
+│   └── __init__.py
 │   └── search_engine.py      // core module for searching purposes
 ├── main_cli.py               // application source
+├── project_config            // File where we store project settings
 ├── requirements.txt
 ```
 
@@ -38,20 +42,22 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-
 ```
-python main_cli.py [-h] [-v] [-vv] {module_name} [opts]
-```
-
-Example for checking if phrase "will smith" in included in the dataset:
-```
-python main_cli.py -vv search_engine "News_Category_Dataset_v2.json" -p "will smith"
+python main_cli.py [-h] [-v] [-vv] {search_engine,import_dataset} [opts]
 ```
 
+Example of importing dataset from Dataset folder and save it to the "foobar" table:
+```bash
+python main_cli.py -vv import_dataset "News_Category_Dataset_v2.json" --table_name "foobar"  
+```
+
+Example of checking if phrase "will smith" is included in the dataset stored in `"foobar"` table:
+```
+python main_cli.py -vv search_engine --phrase "will smith" --table_name "foobar"
+```
+* Important thing -> if `--table_name` is not provided in the params, application will use `"news"` as a default table
 #### Things which could be added/improved:
 * tests (pytest, unitest)
 * linter (ex. pylint)
 * code formater (ex. black)
-* datasets can take a lot of space and they could be stored as zip files and unpacked/proccesed in application
-but it's depends on requirements)
 

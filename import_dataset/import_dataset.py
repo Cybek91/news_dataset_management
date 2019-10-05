@@ -17,8 +17,8 @@ def parse_args(args):
     )
     parser.add_argument(
         "-t",
-        "--db_table",
-        help="table of the DB where dataset will be stored",
+        "--table_name",
+        help="name of the DB table where dataset will be stored",
         type=str,
         default="news"
     )
@@ -67,5 +67,5 @@ def main(args):
 
     LOGGER.info("Loading dataset...")
     dataset_file = load_dataset(file_path)
-    save_to_db(dataset_file, args.db_table)
+    save_to_db(dataset_file, args.table_name)
     LOGGER.info("Dataset successfully imported")

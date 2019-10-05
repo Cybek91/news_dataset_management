@@ -14,6 +14,13 @@ def parse_args(args):
         type=str,
         default=False
     )
+    parser.add_argument(
+        "-t",
+        "--table_name",
+        help="name of the DB table where dataset will be stored",
+        type=str,
+        default="news"
+    )
     return parser.parse_args(args)
 
 
@@ -33,5 +40,6 @@ def main(args):
     args = parse_args(args)
     LOGGER.info("Finding matching articles...")
     phrase = args.phrase
-    matching_articles = (article for article in DB['news'] if is_phrase_in_headline_or_description(article, phrase))
+    table_name = args.table_name
+    matching_articles = (article for article in DB[table_name] if is_phrase_in_headline_or_description(article, phrase))
     present_data(matching_articles, phrase)
